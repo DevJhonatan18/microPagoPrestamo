@@ -41,7 +41,7 @@ services:
       - kafka-local
     hostname: kafka-server
     environment:
-      - ADVERTISED_HOST=kafka-server
+      - ADVERTISED_HOST=127.0.0.1
       - NUM_PARTITIONS=10
     ports:
       - "2181:2181"
