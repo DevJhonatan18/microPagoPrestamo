@@ -1,0 +1,3 @@
+docker build -t servicio-pago:v1
+
+docker run -d -p 8010:8010 --name servicio-pago --network demo_deposit_kafka-local servicio-pago:v1

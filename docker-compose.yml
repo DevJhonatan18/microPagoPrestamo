@@ -3,8 +3,8 @@ services:
   dbmysql:
     image: mysql:5.7
     restart: always
-    networks:
-      - kafka-local
+#    networks:
+#      - kafka_local
     environment:
       MYSQL_DATABASE: 'db_payment'
       # So you don't have to use root, but you can if you like
@@ -23,8 +23,8 @@ services:
     build: .
     ports:
       - "8010"
-    networks:
-      - kafka-local
+#    networks:
+#      - demo_deposit_kafka-local
     depends_on:
       - dbmysql
       - kafka-server
@@ -37,8 +37,8 @@ services:
 
   kafka-server:
     build: kafka
-    networks:
-      - kafka-local
+#    networks:
+#      - demo_deposit_kafka-local
     hostname: kafka-server
     environment:
       - ADVERTISED_HOST=127.0.0.1
@@ -53,4 +53,6 @@ volumes:
 
 
 networks:
-  kafka-local:
+  default:
+    external:
+      name: demo_deposit_kafka-local
